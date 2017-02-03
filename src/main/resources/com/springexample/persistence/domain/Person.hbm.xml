@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "classpath://org/hibernate/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class table="Person" name="com.springexample.persistence.domain.Person">
+        <id name="id" type="long" column="ID">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+                <param name="sequence_name">PERSON_SEQ</param>
+            </generator>
+        </id>
+
+        <property name="firstName" column="FIRST_NAME" type="string" not-null="true"/>
+        <property name="lastName" column="LAST_NAME" type="string"  not-null="true"/>
+
+    </class>
+
+</hibernate-mapping>
+
+
