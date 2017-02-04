@@ -8,6 +8,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 
 /**
@@ -21,6 +22,11 @@ public class PersistenceServiceTest {
     @Autowired
     private PersonService personService;
 
+
+    @Test
+    public void testInjection() {
+        Assert.notNull(personService);
+    }
 
     @Test
     @Rollback(value = false)
