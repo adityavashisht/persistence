@@ -13,6 +13,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import java.util.List;
+
 
 /**
  * Created by Ady on 2/3/17.
@@ -55,6 +57,31 @@ public class PersistenceServiceTest {
 
         personService.save(person);
     }
+
+
+    @Test
+    public void getByCity() {
+        /*List<Person> personList = personService.getAllByCity("Ashburn");
+
+        for(Person p: personList) {
+            System.out.println(p.getFirstName());
+        }*/
+
+
+        List<Person> usingAddressTable = personService.getUsingAddressTable("Ashburn");
+
+        Assert.notEmpty(usingAddressTable);
+    }
+
+    /*@Test
+    @Rollback(value = true)*/
+    public void testDelete() {
+
+       personService.delete(1L);
+
+    }
+
+
 
 
 
