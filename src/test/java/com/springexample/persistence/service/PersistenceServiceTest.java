@@ -1,6 +1,9 @@
 package com.springexample.persistence.service;
 
+import com.springexample.persistence.domain.Address;
+import com.springexample.persistence.domain.AddressType;
 import com.springexample.persistence.domain.Person;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +26,7 @@ public class PersistenceServiceTest {
     private PersonService personService;
 
 
-    @Test
+    @Ignore
     public void testInjection() {
         Assert.notNull(personService);
     }
@@ -35,8 +38,25 @@ public class PersistenceServiceTest {
         person.setFirstName("Aditya");
         person.setLastName("VAshisht");
 
+        Address addressHome = new Address();
+        addressHome.setAddressType(AddressType.HOME);
+        addressHome.setStreet("Evergreen");
+        addressHome.setCity("Ashburn");
+
+        Address addressWork = new Address();
+        addressWork.setAddressType(AddressType.OFFICE);
+        addressWork.setStreet("Lee Road");
+        addressWork.setCity("Chantilly");
+
+        person.addAddress(addressHome);
+        person.addAddress(addressWork);
+
+
+
         personService.save(person);
     }
+
+
 
 
 }

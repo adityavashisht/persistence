@@ -13,7 +13,15 @@
         <property name="firstName" column="FIRST_NAME" type="string" not-null="true"/>
         <property name="lastName" column="LAST_NAME" type="string"  not-null="true"/>
 
+
+        <set name="addressSet" cascade="all-delete-orphan" inverse="true" lazy="true">
+            <key column="PERSON_ID"></key>
+            <one-to-many class="com.springexample.persistence.domain.Address"/>
+        </set>
+
     </class>
+
+
 
 </hibernate-mapping>
 

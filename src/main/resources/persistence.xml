@@ -28,6 +28,7 @@
         <property name="mappingResources">
             <list>
                 <value>com/springexample/persistence/domain/Person.hbm.xml</value>
+                <value>com/springexample/persistence/domain/Address.hbm.xml</value>
             </list>
         </property>
 
