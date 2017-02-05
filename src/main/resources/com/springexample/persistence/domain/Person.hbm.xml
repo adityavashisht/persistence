@@ -21,6 +21,9 @@
 
     </class>
 
+    <query name="query.usingInnerJoin">
+        from Person as p inner join p.addressSet a where a.city=?
+    </query>
 
 
 </hibernate-mapping>

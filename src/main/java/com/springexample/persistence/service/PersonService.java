@@ -55,8 +55,8 @@ public class PersonService {
     public List<Person> getAllByCity(String city) {
         Session session = sessionFactory.getCurrentSession();
 
-
-        Query query = session.createQuery("from Person as p inner join p.addressSet a where a.city=:city").setParameter("city", city);
+        // Named query - the query is in the Mapping file (makes it easier to read)
+        Query query = session.createNamedQuery("query.usingInnerJoin").setParameter(1, city);
         List<Object> objectList = query.list();
 
         List<Person> personList = null;

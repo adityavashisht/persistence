@@ -61,11 +61,11 @@ public class PersistenceServiceTest {
 
     @Test
     public void getByCity() {
-        /*List<Person> personList = personService.getAllByCity("Ashburn");
+        List<Person> personList = personService.getAllByCity("Ashburn");
 
         for(Person p: personList) {
             System.out.println(p.getFirstName());
-        }*/
+        }
 
 
         List<Person> usingAddressTable = personService.getUsingAddressTable("Ashburn");
