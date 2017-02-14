@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springexample.mybatis.mapper.PersonMapper">
+
+    <select id="getPersonList" parameterType="map"
+            resultType="com.springexample.persistence.domain.Person">
+
+        select
+        first_name as firstName,
+        last_name as lastName
+
+        from person
+
+
+
+    </select>
+
+
+</mapper>
