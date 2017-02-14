@@ -1,6 +1,7 @@
 package com.springexample.mybatis;
 
 import com.springexample.mybatis.mapper.PersonMapper;
+import com.springexample.mybatis.mapper.SearchCriteria;
 import com.springexample.persistence.domain.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,6 +32,14 @@ public class MybatisTest {
     @Test
     public void getPerson() {
         List<Person> personList = personMapper.getPersonList(2L);
+        System.out.println(personList.size());
+    }
+
+    @Test
+    public void search() {
+        SearchCriteria criteria = new SearchCriteria();
+        criteria.setLastName("Vashisht".toLowerCase());
+        List<Person> personList = personMapper.search(criteria);
         System.out.println(personList.size());
     }
 }

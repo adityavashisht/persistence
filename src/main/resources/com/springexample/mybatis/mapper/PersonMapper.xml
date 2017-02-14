@@ -19,4 +19,24 @@
     </select>
 
 
+    <select id="search" parameterType="map"
+            resultType="com.springexample.persistence.domain.Person">
+
+        select first_name as firstName, last_name as lastName
+        from person
+        where 1=1
+
+        <if test="searchCriteria.getFirstName()!=null">
+            AND lower(first_name) = #{searchCriteria.firstName}
+        </if>
+
+        <if test="searchCriteria.getLastName()!=null">
+            AND lower(last_name) = #{searchCriteria.lastName}
+        </if>
+
+
+
+    </select>
+
+
 </mapper>

@@ -11,4 +11,6 @@ import java.util.List;
 public interface PersonMapper {
 
     List<Person> getPersonList(@Param("id") Long id);
+
+    List<Person> search(@Param("searchCriteria") SearchCriteria searchCriteria);
 }
