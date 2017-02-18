@@ -58,6 +58,15 @@ public class PersonService {
         session.delete(p);
     }
 
+    /**
+     *
+     * @return
+     */
+    public List<Person> getAll() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("from Person").list();
+    }
+
 
     /**
      * @param city
