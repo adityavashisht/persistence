@@ -2,6 +2,7 @@ package com.springexample.persistence.service;
 
 import com.springexample.persistence.domain.Person;
 import org.hibernate.FlushMode;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -24,7 +25,7 @@ public class PersonService {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public void save(Person person) {
+    public Person save(Person person) {
 
 
         // From the factory get a "current" session
@@ -37,9 +38,19 @@ public class PersonService {
 
         session.flush();
 
+        return person;
+
 
     }
 
+
+    public Person load(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        Person p = session.load(Person.class, id);
+        Hibernate.initialize(p);
+
+        return p;
+    }
 
     public void delete(Long id) {
         Session session = sessionFactory.getCurrentSession();

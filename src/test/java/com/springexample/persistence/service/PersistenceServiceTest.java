@@ -55,7 +55,7 @@ public class PersistenceServiceTest {
 
 
 
-        personService.save(person);
+       person = personService.save(person);
     }
 
 
