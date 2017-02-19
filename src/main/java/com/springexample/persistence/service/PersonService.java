@@ -1,6 +1,7 @@
 package com.springexample.persistence.service;
 
 import com.springexample.persistence.domain.Person;
+import com.springexample.persistence.dto.PersonDTO;
 import org.hibernate.FlushMode;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
@@ -62,10 +63,14 @@ public class PersonService {
      *
      * @return
      */
-    public List<Person> getAll() {
+    public List<PersonDTO> getAll() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Person").list();
+        List<PersonDTO> personDTOList = session.getNamedQuery("query.loadPersonDTO").list();
+
+        return personDTOList;
     }
+
+
 
 
     /**

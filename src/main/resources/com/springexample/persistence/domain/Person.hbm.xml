@@ -25,6 +25,12 @@
         from Person as p inner join p.addressSet a where a.city=?
     </query>
 
+    <query name="query.loadPersonDTO">
+        select new com.springexample.persistence.dto.PersonDTO(p.firstName, p.lastName)
+        from Person p
+
+    </query>
+
 
 </hibernate-mapping>
 
