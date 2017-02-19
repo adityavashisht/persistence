@@ -39,7 +39,7 @@ public class MybatisTest {
     public void search() {
         SearchCriteria criteria = new SearchCriteria();
         criteria.setLastName("Vashisht".toLowerCase());
-        List<Person> personList = personMapper.search(criteria);
-        System.out.println(personList.size());
+        //List<Person> personList = personMapper.search(criteria);
+        //System.out.println(personList.size());
     }
 }

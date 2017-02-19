@@ -6,22 +6,9 @@
 
 
 
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-
     <!-- Step 1  Enable discovery of spring component -->
     <context:component-scan base-package="com.springexample.mybatis"/>
 
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-
-    <!-- Step 2 Define your datasource -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="password" value="carapace23"/>
-        <property name="username" value="postgres"/>
-        <property name="url" value="jdbc:postgresql://localhost:5432/persistence"/>
-    </bean>
 
     <!-- Which mappers am I dealing with? How am I to know all the SQL you are going to execute -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

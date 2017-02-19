@@ -1,6 +1,8 @@
 package com.springexample.mybatis.mapper;
 
+import com.springexample.datatable.helper.DataTablePageCriteria;
 import com.springexample.persistence.domain.Person;
+import com.springexample.persistence.dto.PersonDTO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -12,5 +14,5 @@ public interface PersonMapper {
 
     List<Person> getPersonList(@Param("id") Long id);
 
-    List<Person> search(@Param("searchCriteria") SearchCriteria searchCriteria);
+    List<PersonDTO> getForTable(@Param("pageCriteria") DataTablePageCriteria pageCriteria);
 }

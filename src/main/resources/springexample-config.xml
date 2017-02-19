@@ -3,7 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <import resource="infrastructure.xml"/>
     <import resource="persistence.xml"/>
+    <import resource="mybatis.xml"/>
+    <!-- Web tier -->
     <import resource="mvc-config.xml"/>
+
 
 </beans>

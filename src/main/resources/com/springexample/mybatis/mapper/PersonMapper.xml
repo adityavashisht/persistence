@@ -19,21 +19,39 @@
     </select>
 
 
-    <select id="search" parameterType="map"
-            resultType="com.springexample.persistence.domain.Person">
+    <select id="getForTable" parameterType="map"
+            resultType="com.springexample.persistence.dto.PersonDTO">
 
-        select first_name as firstName, last_name as lastName
-        from person
-        where 1=1
+        WITH Persons AS (
 
-        <if test="searchCriteria.getFirstName()!=null">
-            AND lower(first_name) = #{searchCriteria.firstName}
-        </if>
+        select
+        p.first_name as firstName,
+        p.last_name as lastName
+        from person P
 
-        <if test="searchCriteria.getLastName()!=null">
-            AND lower(last_name) = #{searchCriteria.lastName}
-        </if>
+        ),
+        PersonsCount AS (
+        SELECT *, ROW_NUMBER () OVER (
+        <choose>
+            <when test="pageCriteria.getSortOnColumn() == 1">ORDER BY firstName</when>
+            <when test="pageCriteria.getSortOnColumn() == 2">ORDER BY lastName</when>
 
+            <otherwise>
+                ORDER BY firstName
+            </otherwise>
+        </choose>
+
+        <choose>
+            <when test="pageCriteria.ascending">ASC</when>
+            <otherwise>DESC</otherwise>
+        </choose>
+        ) as RowNumber FROM Persons
+        )
+        SELECT *, (select COUNT(*) from Persons) as total
+        FROM PersonsCount
+        WHERE RowNumber &gt; #{pageCriteria.offset}
+        AND RowNumber &lt;= #{pageCriteria.upperRowBound}
+        ORDER by RowNumber
 
 
     </select>
